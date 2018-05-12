@@ -1,0 +1,44 @@
+// zadanie 2: Wykonać "Drill" ze strony 83 w książce.
+
+#include "std_lib_facilities.hpp"
+#include <cstdio>
+
+int main()
+{
+	string first_name, friend_name;
+	char friend_sex=0;
+	int age;
+
+	cout << "Enter the name of the person you want to write to:.. \n";
+	cin >> first_name;
+	cout << "Dear, " << first_name << "!\n" << "How are you? I am fine. I miss you.(two more lines of lies)\n ";
+	cout << "Enter the name of the another friend:.. \n";
+	cin >> friend_name;
+	cout << " Have you seen " << friend_name << " lately?\n";
+	cout << "Enter the sex of the another friend f for female m for male:.. "<<endl;
+	cin >> friend_sex;
+
+	if (friend_sex == 'm')
+		cout << "If you see " << friend_name << " please ask him to call me"<<endl;
+	else if (friend_sex == 'f')
+		cout << "If you see " << friend_name << " please ask her to call me"<<endl;
+	else
+		cout << "Please enter f for female or m for male" << endl;
+
+	cout << "Please enter friend age" << endl;
+	cin >> age;
+	if (age <= 0 || age >= 110)
+		simple_error("you're kidding!");
+	cout << "I hear you just had a birthday and you are " << age << " years old" << endl;
+	if (age < 12)
+		cout << "Next year you will be " << age + 1 << endl;
+	if (age == 17)
+		cout << "Next year you will be able to vote" << endl;
+		if (age > 70)
+			cout << "I hope you are enjoying retirement" << endl;
+	cout << "Yours sincerely," << endl << endl << endl << "Patryk"<<endl;
+
+	do {} while (1); // nieskończona pętla/getchar nie działa/systempause nie działa na linuksie
+
+	return 0;
+}
