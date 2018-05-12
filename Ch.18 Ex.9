@@ -1,0 +1,79 @@
+// Zrobic zad 9 ze str. 665
+
+#include "std_lib_facilities.hpp"
+
+int as = 0;
+int bs = 0;
+int cs = 0;
+int ds = 0;
+int es = 0;
+
+int main()
+{
+	int* pa = &as;
+	int* pb = &bs;
+	int* pc = &cs;
+	int* pd = &ds;
+	int* pe = &es;
+	cout << pa << endl << pb << endl << pc << endl << pd << endl << pe << endl;
+	if (pe > pd)
+	{
+		cout << "Static storage grows upwards"<<endl;
+	}
+	else
+	{
+		cout << "Static storage grows downwards" << endl;
+	}
+	
+	int sa = 0;
+	int sb = 0;
+	int sc = 0;
+	int* psa = &sa;
+	int* psb = &sb;
+	int* psc = &sc;
+	cout << endl << psa << endl << psb << endl << psc << endl;
+	if (psc<psb)
+	{
+		cout << "Stack grows downwards"<<endl;
+	}
+	else
+	{
+		cout << "Stack grows upwards" << endl;
+	}
+
+	int* ha = new int(0);
+	int* hb = new int(0);
+	int* hc = new int(0);
+	cout << endl << ha << endl << hb << endl << hc << endl;
+	if (hc > hb)
+	{
+		cout << "Heap grows upwards"<<endl;
+	}
+	else
+	{
+		cout << "Heap grows downwards" << endl;
+	}
+
+	int* heap = new int[5];
+	cout << endl;
+
+	for (int i = 0; i<5; ++i) 
+	{
+		heap[i] = 0;
+		cout << &heap[i] << endl;
+	}
+	if (&heap[4] > &heap[3])
+	{
+		cout << "Arrays on free store grow upwards"<<endl;
+	}
+	else
+	{
+		cout << "Arrays on free store grow upwards" << endl;
+	}
+	delete[] heap;
+	delete hc;
+	delete hb;
+	delete ha;
+
+	system("pause");
+}
