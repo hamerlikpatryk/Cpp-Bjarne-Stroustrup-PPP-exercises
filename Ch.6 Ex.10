@@ -1,0 +1,44 @@
+// zadanie 12: wykonac Exercise 10 ze str.219
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	int all, selection, i, choice;
+	double d = 1.0;
+	cout << "Ile będzie wszystkich liczb?" << endl;
+	if (!(cin >> all) || all < 0 || all > 100)
+	{
+		cout << "Wpisz liczbę od 0 do 100";
+	}
+	cout << "Ile będzie liczb w danej sekcji?";
+	if (!(cin >> selection) || selection < 0 || selection > all)
+	{
+		cout << "Liczba musi być mniejsza niż liczba wszystkich liczb";
+	}
+	cout << "Kliknij 1 dla permutacji, 2 dla kombinacji" << endl;
+	cin >> choice;
+	switch (choice)
+	{
+	case 1:
+
+		for (i = 1; i <= selection; ++i)
+		{
+			d *= double(all - selection + i);
+		}
+		cout << "Liczba permutacji: " << d << endl;
+		break;
+
+	case 2:
+		for (i = 1; i <= selection; ++i)
+		{
+			d *= double(all - selection + i) / i;
+		}
+		cout << "Liczba kombinacji: " << d << endl;
+		break;
+
+	default:
+		cout << "Można kliknąć tylko 1 lub 2" << endl;
+		break;
+	}
+}
