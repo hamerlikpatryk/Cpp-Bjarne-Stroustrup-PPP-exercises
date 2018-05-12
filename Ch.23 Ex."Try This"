@@ -1,0 +1,36 @@
+// Zrobic "Try this" ze str.862
+
+#include "std_lib_facilities.hpp"
+
+using namespace std;
+
+int main()
+{
+	regex pattern;
+
+	string patt;
+
+	cout << "Wprowadź wzor: ";
+	getline(cin, patt);  
+
+		pattern = patt;  
+		cout << "Wzor: " << patt << endl;
+
+		cout << "Wprowadz linijke: " << endl;
+	string lineone;    
+	int linen = 0;
+
+	while (getline(cin, lineone)) 
+	{
+		++linen;
+		smatch matches;
+		if (regex_search(lineone, matches, pattern)) 
+		{
+			cout << "Linia " << linen << ": " << lineone <<endl;
+			for (int i = 0; i<matches.size(); ++i)
+				cout << "pasuje z [" << i << "]: " << matches[i] << endl;
+		}
+		else
+			cout << "nie pasuje" << endl;
+	}
+}
