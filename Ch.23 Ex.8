@@ -1,0 +1,41 @@
+// Zrobic zad 8 ze str 887.
+
+#include "std_lib_facilities.hpp"
+
+using namespace std;
+
+int main()
+{
+
+	regex pattern;	
+	string patt;
+	cout << "Wprowadx wzor: ";
+	getline(cin, patt);      
+	pattern = patt;          
+	cout << "Wzor: " << patt << endl;
+	
+	
+
+	cout << "w jakim pliku szukac?" <<endl;
+	string iname;
+	cin >> iname;
+	ifstream ifs{ iname };
+	if (!ifs)
+	{
+		cerr << "Nie znaleziono pliku " << iname <<endl;
+	}
+
+	int lineno = 0;
+	for (string line; getline(ifs, line); )
+	{
+		++lineno;
+		smatch matches;
+		if (regex_search(line, matches, pattern)) 
+		{
+			cout << "linia " << lineno << ": " << line << endl;
+			for (int i = 0; i < matches.size(); ++i)
+				cout << "\t łaczy sie z [" << i << "]: "
+				<< matches[i] << endl;
+		}
+	}
+}
