@@ -1,0 +1,71 @@
+// Zadanie 6: wykonac Drill ze str. 407
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	//int birth_year, age, a, b, c, d;
+	//cout << "Enter your birth year: "; 
+	//cin >> birth_year;
+	//
+	//cout << birth_year << "\t(decimal)\n" << hex << birth_year <<"\t(hexadecimal)\n" << oct << birth_year << "\t(octal)\n";
+	//cout << showbase << dec;
+	//
+	//cout << birth_year << "\t(decimal)\n" << hex << birth_year <<"\t(hexadecimal)\n" << oct << birth_year << "\t(octal)\n";
+	//cout << "Enter your age: "; cin >> age;
+	//cout << showbase << dec;
+	//cout << age << endl;
+	//
+	//cout << "Enter four times '1234': ";
+	//cin >> a >> oct >> b >> hex >> c >> d;
+	//cout << a << '\t' << b << '\t' << c << '\t' << d << '\n';
+	//cout << "\n";
+	//
+	//cout << 1234567.89 << "\t\t(defaultfloat)\n" << fixed << 1234567.89 << "\t(fixed)\n" << scientific << 1234567.89 << "\t(scientific)\n";
+
+	vector<string>ln; vector<string>fn; vector<int>number; vector<string>email;
+
+	string last_n, first_n, mail;
+	int phone_number;
+	int i = 0;
+
+	while (i!= 5)
+	{
+		cout << "Write down names: ";
+		cin >> last_n;
+		ln.push_back(last_n);
+		i++;
+	}
+	i = 0;
+	while (i!= 5)
+	{
+		cout << "Write down first names: ";
+		cin >> first_n;
+		fn.push_back(first_n);
+		i++;
+	}
+	i = 0;
+	while (i != 5)
+	{
+		cout << "Write down phone numbers: ";
+		cin >> phone_number;
+		number.push_back(phone_number);
+		i++;
+	}
+	i = 0;
+	while (i != 5)
+	{
+		cout << "Write down emails: ";
+		cin >> mail;
+		email.push_back(mail);
+		i++;
+	}
+
+	cout << "Last name: " << "\t"<< ln[0] << "\t" << ln[1] << "\t" << ln[2] << "\t" << ln[3] << "\t" << ln[4] << endl;
+	cout << "First name: " << "\t" << fn[0] << "\t" << fn[1] << "\t" << fn[2] << "\t" << fn[3] << "\t" << fn[4] << endl;
+	cout << "Phone number: " << "\t"<< number[0] << "\t" << number[1] << "\t" << number[2] << "\t" << number[3] << "\t" << number[4] << endl;
+	cout << "Email : " << "\t"<< email[0] << "\t" << email[1] << "\t" << email[2] << "\t" << email[3] << "\t" << email[4] << endl;
+
+	keep_window_open();
+	return 0;
+}
