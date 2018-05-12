@@ -1,0 +1,55 @@
+// zadanie 3: wykonac Exercise 8 ze str. 378
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	ifstream file_1, file_2;
+	ofstream file_3;
+	string text_1, text_2, text_3 = { "all.txt" };
+
+	char c;
+
+
+	cout << "Please write down two names of files: ";
+	cin >> text_1 >> text_2;
+
+	file_1.open(text_1);
+	if (file_1.good() == false)
+	{
+		cout << "ERROR: file doesn't exist!";
+		exit(0);
+	}
+
+	file_2.open(text_2);
+	if (file_2.good() == false)
+	{
+		cout << "ERROR: file doesn't exist!";
+		exit(0);
+	}
+
+	file_3.open(text_3);
+	if (file_3.good() == false)
+	{
+		cout << "ERROR: file doesn't exist!";
+		exit(0);
+	}
+	while (file_1.eof() == 0) //end of file
+	{
+		file_1 >> c;
+		file_3 << c;
+	}
+	while (file_2.eof() == 0)
+	{
+		file_2 >> c;
+		file_3 << c;
+	}
+
+	file_1.close();
+	file_2.close();
+	file_3.close();
+
+	keep_window_open();
+
+	return 0;
+}
