@@ -1,0 +1,27 @@
+// zadanie 8: wykonac Exercise 8 ze str.170
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	vector<int>vec;
+	int n, a, i = 1;
+	cout << "Please enter the number of values you want to sum: "; 
+	cin >> n;
+	cout << "Please enter some integers (press '|' to stop): " << endl;
+	while (cin >> a)
+	{
+		if (i <= n)
+		{
+			++i;
+			vec.push_back(a);
+		}
+		else 
+			cout << a;
+	}
+	double sum = 0;
+	for (double x : vec) 
+		sum += x;
+	cout << "The sum of the first " << n << " numbers is " << sum << endl;
+
+}
