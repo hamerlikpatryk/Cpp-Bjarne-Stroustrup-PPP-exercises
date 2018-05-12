@@ -1,0 +1,50 @@
+//Zrobic drill ze str 622. Uwaga: Zrobic TYLKO PIERWSZA czesc.
+
+#include "std_lib_facilities.hpp"
+
+using namespace std;
+
+
+void init_array (int * arg, int n) {
+    for (int i = 0; i < n; ++i) arg[i] = 100+i;
+};
+
+
+void print_array (ostream & os, int * arg, int n) {
+    for (int i = 0; i < n; ++i) os << arg[i] << " ";
+    os << endl;
+};
+
+void init_vector (vector<int> & arg) {
+    for (int i = 0; i < int(arg.size()); ++i) arg[i] = 100+i;
+};
+
+
+void print_vector (ostream & os, vector<int> & arg) {
+    for (int i = 0; i < int(arg.size()); ++i) os << arg[i] << " ";
+    os << endl;
+};
+
+int main () {
+    int * a = new int[10];
+    init_array(a,10);
+    print_array(cout,a,10);
+    delete a;
+    int * b = new int[11];
+    init_array(b,11);
+    print_array(cout,b,11);
+    delete b;
+    int * c = new int[20];
+    init_array(c,20);
+    print_array(cout,c,20);
+    delete c;
+    vector<int> d(10);
+    init_vector(d);
+    print_vector(cout,d);
+    vector<int> e(11);
+    init_vector(e);
+    print_vector(cout,e);
+    vector<int> f(20);
+    init_vector(f);
+    print_vector(cout,f);
+}
