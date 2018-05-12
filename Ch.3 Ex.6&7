@@ -1,0 +1,84 @@
+// zadanie 4: Wykonać "Exercise 6 oraz 7" ze strony 86 w książce.
+// 6. Write a program that prompts the user to enter three integer values, and
+// then outputs the values in numerical sequence separated by commas. So,
+// if the user enters the values 10 4 6, the output should be 4, 6, 10. If two
+// values are the same, they should just be ordered together. So, the input
+// 4 5 4 should give 4, 4, 5.
+// 7. Do exercise 6, but with three string values. So, if the user enters the val-
+// ues Steinbeck, Hemingway, Fitzgerald, the output should be Fitzgerald,
+// Hemingway, Steinbeck.
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{   
+    {
+    int val1,val2,val3;
+    cout<<"Please write first value"<<endl;
+    cin>>val1;
+    cout<<"Please write second value"<<endl;
+    cin>>val2; 
+    cout<<"Please write third value"<<endl;
+    cin>>val3;
+    if(val1>=val2 && val1>=val3)
+    {
+        cout<<val1<<"-->";
+        if(val2>=val3)
+            cout<<val2<<"-->"<<val3;
+        else if(val2<=val3)
+            cout<<val3<<"-->"<<val2;
+    }
+    else if(val2>=val1 && val2>=val3)
+    {
+        cout<<val2<<"-->";
+        if(val1>=val3)
+            cout<<val1<<"-->"<<val3;
+        else if(val1<=val3)
+            cout<<val3<<"-->"<<val2;
+    }
+    else if(val3>=val2 && val3<=val1)
+    {
+        cout<<val3<<"-->";
+        if(val1>=val2)
+            cout<<val1<<"-->"<<val2;
+        else if(val1<=val2)
+            cout<<val2<<"-->"<<val1;
+    }
+    }
+   
+    {
+    string val1,val2,val3;
+    cout<<"Please write first value/name"<<endl;
+    cin>>val1;
+    cout<<"Please write second value/name"<<endl;
+    cin>>val2; 
+    cout<<"Please write third value/name"<<endl;
+    cin>>val3;
+    if(val1>=val2 && val1>=val3)
+    {
+        cout<<val1<<"-->";
+        if(val2>=val3)
+            cout<<val2<<"-->"<<val3;
+        else if(val2<=val3)
+            cout<<val3<<"-->"<<val2;
+    }
+    else if(val2>=val1 && val2>=val3)
+    {
+        cout<<val2<<"-->";
+        if(val1>=val3)
+            cout<<val1<<"-->"<<val3;
+        else if(val1<=val3)
+            cout<<val3<<"-->"<<val2;
+    }
+    else if(val3>=val2 && val3<=val1)
+    {
+        cout<<val3<<"-->";
+        if(val1>=val2)
+            cout<<val1<<"-->"<<val2;
+        else if(val1<=val2)
+            cout<<val2<<"-->"<<val1;
+    }
+    
+    }
+    return 0; //liczy od największej do najmniejszej, w obu przypadkach
+}
