@@ -1,0 +1,158 @@
+// Zrobic zadanie 11 ze str. 709
+
+#include "std_lib_facilities.hpp"
+
+struct Trace {
+	Trace() : value(0)
+	{
+		cout << "Definue ctor" << endl;
+	}
+	Trace(int n) : value(n)
+	{
+		cout << "Arg ctor " << n << endl;
+	}
+	Trace(const Trace& t) : value(t.value)
+	{
+		cout << "Cpy ctor " << value <<endl;
+	}
+	Trace& operator=(const Trace& t)
+	{
+		value = t.value;
+		cout << "Cpy assgn " << value << endl;;
+		return *this;
+	}
+	~Trace() 
+	{
+		cout << "Destor " << value << endl;
+	}
+	int value;
+};
+
+template<class T> class counted_ptr
+{
+	T* value;     
+	int* cnt;   
+public:
+	counted_ptr(const T& arg);                 
+	counted_ptr(const counted_ptr&);           
+	counted_ptr& operator=(const counted_ptr&);
+
+	~counted_ptr();
+
+	T operator*() const 
+	{
+		return *value; 
+	}
+	T* operator->() const 
+	{
+		return value; 
+	}
+
+	int count() const 
+	{
+		return *cnt; 
+	}
+};
+
+template<class T> counted_ptr<T>::counted_ptr(const T& arg)
+{
+	value = new T(arg);
+	cnt = new int(1);
+}
+
+template<class T> counted_ptr<T>::counted_ptr(const counted_ptr& arg)
+{
+	value = arg.value;
+	cnt = arg.cnt;
+	++(*cnt);       
+}
+
+template<class T> counted_ptr<T>& counted_ptr<T>::operator=(const counted_ptr& arg)
+{
+	if (&arg == this) return *this;
+	--(*cnt);
+	if (*cnt == 0)
+	{
+		delete value;
+		delete cnt;
+	}
+	value = arg.value;
+	cnt = arg.cnt;
+	++(*cnt);       
+	return *this;
+}
+
+template<class T> counted_ptr<T>::~counted_ptr()
+{
+	--(*cnt);
+	if (*cnt == 0)
+	{
+		cout << "Destruct counted pointer"<<endl;
+		delete value;
+		delete cnt;
+	}
+}
+
+template<class T> void f3(const counted_ptr<T>& cp2)
+{
+	counted_ptr<Trace> cp3(Trace(0));
+	cp3 = cp2;
+	cout << "cp3->val: " << cp3->value << endl;
+	cout << "cp3.cnt: " << cp3.count() << endl;
+	cout << "cp2.cnt: " << cp2.count() << endl;
+}
+
+template<class T> void f2(const counted_ptr<T>& cp1)
+{
+	counted_ptr<T> cp2(cp1);
+
+	cout << "cp2->val: " << cp2->val << endl;
+	cout << "cp2.cnt: " << cp2.count() << endl;
+	f3(cp2);
+	cout << "cp2.cnt: " << cp2.count() << endl;
+}
+
+void f1()
+{
+	Trace t(99);
+	counted_ptr<Trace> cp1(t);
+
+	cout << "(*cp1).val: " << (*cp1).value << endl;
+	cout << "cp1->val: " << cp1->value <<endl;
+	cout << "cp1.cnt: " << cp1.count() <<endl;
+	f2(cp1);						   
+	cout << "cp1.cnt: " << cp1.count() <<endl;
+}
+
+int main()
+{
+	
+	f1();
+
+	vector<counted_ptr<string> > vcp;
+	counted_ptr<string> cp("try");
+	cout << "refer count: " << cp.count() << endl;
+	for (int i = 0; i<10; ++i)
+	{
+		vcp.push_back(counted_ptr<string>(cp));
+		cout << "refer count[" << i << "]: " << vcp[i].count() << endl;
+	}
+	for (int i = 0; i<10; ++i)
+	{ 
+		cout << "refer count[" << i << "]: " << vcp[i].count() << endl;
+	}
+		vcp.resize(0, counted_ptr<string>(""));
+	
+
+	counted_ptr<Trace> cp1(Trace(5));
+	counted_ptr<Trace> cp2(cp1);
+	counted_ptr<Trace> cp3(Trace(6));
+	counted_ptr<Trace> cp4(cp3);
+	cout << "cp1 refcount: " << cp1.count() << endl;
+	cout << "cp3 refcount: " << cp3.count() << endl;
+	cp3 = cp1;								
+	cout << "cp1 refcount: " << cp1.count() << endl;
+	cout << "cp4 refcount: " << cp4.count() << endl;
+	cp4 = cp1; 
+	cout << "cp1 refcount: " << cp1.count() << endl;
+}
