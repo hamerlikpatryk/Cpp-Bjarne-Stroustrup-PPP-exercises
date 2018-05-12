@@ -1,0 +1,42 @@
+// zadanie 2: wykonac Exercise 3 ze str.128
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	bool loop_stop = true; //domyślna wart false
+	vector<double>dist_vec;
+	double dist, sum = 0;
+
+
+	while (loop_stop == true)
+	{
+		cout << "Wprowadz nowa odleglosc" << endl;
+		cin >> dist;
+		if (dist >= 0)
+			dist_vec.push_back(dist);
+		else
+		{
+			cout << "wprowadź wartoś większą lub równą 0" << endl;
+			loop_stop = false;
+		}
+	}
+	cout << "Wpisane odległości między miastami: " << endl;
+	for (double x : dist_vec)
+	{
+		cout << x << endl;
+	}
+	for (double x : dist_vec) sum += x;
+	{
+		cout << "suma odleglosci: " << sum << endl;
+		cout << "średnia największej i najmniejszej odleglosci: " << sum / dist_vec.size() << endl;
+		sort(dist_vec);
+
+		for (double i = 0; i < dist_vec.size(); i++)
+		{
+			cout << dist_vec[i] << endl;
+		}
+		cout << "najmniejsza odleglosc: " << dist_vec[0] << endl;
+		cout << "Największa odl : " << dist_vec[dist_vec.size() - 1];
+	}
+}
