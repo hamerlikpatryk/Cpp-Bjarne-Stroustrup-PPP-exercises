@@ -1,0 +1,58 @@
+// Zadanie 1: wykonac Drill ze str. 376
+
+#include "std_lib_facilities.hpp"
+
+	class Point
+	{
+	public:
+		double x, y;
+	};
+
+int main()
+{
+
+	double x, y;
+	int stop = 0;
+
+	vector<Point> original_points;
+	vector<Point> processed_points;
+	cout << "Please enter 7 numbers of x and y" << endl;
+	while (cin >> x >> y && stop < 7) 
+	{
+		original_points.push_back(Point{ x,y });
+		processed_points.push_back(Point{ x,y });
+		stop++;
+	}
+	
+	string out_file;
+	cout << "Please enter name of output file: ";
+	cin >> out_file;
+	ofstream out_st{ out_file };
+
+	if (!out_st)
+		error("  open output file ", out_file);
+
+	cout << "Please enter input file name: ";
+	string in_file;
+	cin >> in_file;
+	ifstream in_st{ in_file };
+
+	if (!in_st)
+		error("can't open input file ", in_file);
+
+	for (double i = 0; i < original_points.size(); i++)
+	{
+
+		out_st << "(" << original_points[i].x << "" << original_points[i].y << ")" << endl;
+
+
+		for (double z = 0; z < processed_points.size(); z++)
+		{
+			cout << "(" << processed_points[z].x << "" << processed_points[z].y << ")" << endl;
+		}
+	}
+
+	keep_window_open();
+	return 0;
+
+}
