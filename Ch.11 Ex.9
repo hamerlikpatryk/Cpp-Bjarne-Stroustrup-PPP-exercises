@@ -1,0 +1,59 @@
+// Zadanie 9: wykonac exercise 9 ze str. 409, lecz bez rozdzielania na dwa programy:
+
+// niech program jako dane wejĹciowe otwiera plik zad09.input,
+// wynik binarny niech zapisuje do pliku zad09.binary, w drugiej
+// czÄĹci (w tym samym programie) nastÄpnie niech czyta
+// zad09.binary i zapisuje koĹcowy wynik do pliku zad09.output
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+		cout << "Please type down input file name\n";
+		string bin_name;
+		cin >> bin_name;
+		ifstream ifs { bin_name }; 
+
+		if (!ifs) error("can't open input file ", bin_name);
+		
+		cout << "Please type down output file name\n";
+		string bin_out_name;
+		cin >> bin_out_name;
+		ofstream ofs{ bin_out_name,ios_base::binary }; 
+												 
+		if (!ofs) error("can't open output file ", bin_out_name);
+
+		vector<int> vec;
+		char x;
+
+		while (ifs.eof() == 0 && ifs >> x)
+		{
+			vec.push_back(x);
+		}
+		
+		for (char x : vec)
+			ofs.write(as_bytes(x), sizeof(int)); 
+
+		cout << "Please type down input file name\n";
+		string in_name;
+		cin >> in_name;
+		ifstream ist { in_name,ios::binary };
+										  
+		if (!ist) error("can't open input file ", in_name);
+		
+		cout << "Please type down output file name\n";
+		string out_name;
+		cin >> out_name;
+		ofstream ost{ out_name }; 
+
+		if (!ost) error("can't open output file ", out_name);
+		vector<int> vec_1;
+
+		for (int y; ist.read(as_bytes(y), sizeof(int)); ) 
+			vec_1.push_back(y);
+		for (int z = 0; z<vec_1.size(); ++z)
+			ost << vec_1[z] << "\n";
+
+		keep_window_open();
+		return 0;
+}
