@@ -1,0 +1,18 @@
+// zadanie 9: wykonac Exercise 11 ze str.171
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	int a = 0, b = 1, n;
+	cout << "Ile liczb Fibbonacciego chcesz wyznaczyć? ";
+	cin >> n;
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << b << endl;
+		b += a;
+		a = b - a;
+	}
+	cout << "Największą liczbą ciągu Fibbonacciego zawartą w int jest 46." << endl;
+}
