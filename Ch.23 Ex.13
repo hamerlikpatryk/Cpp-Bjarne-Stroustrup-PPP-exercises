@@ -1,0 +1,19 @@
+// Zrobic zadanie 13 ze str. 888
+
+#include "std_lib_facilities.hpp"
+
+using namespace std;
+
+int main()
+{
+		string test = "\n";
+
+		regex pat{ R"(.)" };
+
+		if (regex_search(test, pat))
+			cout << "Dot matches newline!\n";
+		else
+			cout << "Nope!\n";
+
+		system("pause");
+}
