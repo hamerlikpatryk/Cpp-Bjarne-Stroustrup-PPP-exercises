@@ -1,0 +1,39 @@
+// Zrobic drill ze str 886.
+
+#include "std_lib_facilities.hpp"
+
+
+	using namespace std;
+
+int main()
+{
+	//std::regex;
+	//tr1::regex; //works
+
+		ifstream in{ "file.txt" }; 
+		if (!in) cerr << "no file\n";
+		regex pat{ R"(\w{2}\s*\d{5}(–\d{4})?)" }; 
+		int lineno = 0;
+		/*for (string line; getline(in, line); ) { 
+			++lineno;
+			smatch matches;
+			if (regex_search(line, matches, pat))
+				cout << lineno << ": " << matches[0] << '\n';
+		}*/
+		for (string line; getline(in, line); ) {
+			smatch matches;
+			if (regex_search(line, matches, pat))
+			{
+					cout << lineno << ": " << matches[0] << '\n'; 
+				if (1<matches.size() && matches[1].matched)
+					cout << "\t: " << matches[1] << '\n'; 
+			}
+		}
+
+
+
+
+
+		system("pause");
+	return 0;
+}
