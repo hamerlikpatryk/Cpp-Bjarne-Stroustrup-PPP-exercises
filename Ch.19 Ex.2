@@ -1,0 +1,38 @@
+// Zrobic zadanie 2 ze str. 708
+
+#include "std_lib_facilities.hpp"
+
+template<typename T, typename U>
+	typename std::common_type<T, U>::type f(const vector<T>& vt, const vector<U>& vu)
+	{
+		typename std::common_type<T, U>::type sum = 0;
+		int min_size = vt.size() <= vu.size() ? vt.size() : vu.size();
+		for (int i = 0; i<min_size; ++i) {
+			sum += vt[i] * vu[i];
+		}
+		return sum;
+	}
+
+
+
+int main()
+{
+
+		vector<int> v1;
+		for (int i = 0; i < 21; ++i)
+		{
+			v1.push_back(i);
+		}
+		cout << "v1: ";
+		v1;
+		cout << endl;
+
+		vector<double> v2;
+		for (int i = 0; i<9; ++i)
+		{ 
+			v2.push_back(i*1.2);
+		}
+		cout << "f(v1,v2): " << f(v1, v2) <<endl;
+
+		system("pause");
+}
