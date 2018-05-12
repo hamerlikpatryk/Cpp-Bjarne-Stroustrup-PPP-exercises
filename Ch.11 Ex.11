@@ -1,0 +1,31 @@
+// Zadanie 11: wykonac exercise 16 ze str. 409
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	int x, i, a;
+	string in_name;
+
+	cout << "PLease write down name of input file: ";
+	cin >> in_name;
+
+	ifstream stream(in_name.c_str());
+
+	vector<int> vec;
+
+	while (stream >> x) vec.push_back(x);
+	sort(vec.begin(), vec.end());
+
+	for (i = 0; i < vec.size(); ++i)
+	{
+		if (i == 0 || vec[i] != vec[i - 1])
+		{
+			if (a > 1) cout << "\t" << a;
+			cout << "\n";
+			a = 1;
+			cout << vec[i];
+		}
+		else ++a;
+	}
+}
