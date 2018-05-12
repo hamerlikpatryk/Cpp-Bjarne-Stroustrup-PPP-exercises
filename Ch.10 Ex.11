@@ -1,0 +1,69 @@
+// zadanie 5: wykonac Exercise 11 ze str. 378
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	cout << "Please write down file name: ";
+
+	int sum = 0;
+
+	string inp_name;
+	cin >> inp_name;
+	int n = 0;
+
+	ifstream in_st{ inp_name }; 
+	if (!in_st) error("can't open input file ", inp_name);
+
+	vector<int>vec;
+
+	while (in_st.eof() == 0)
+	{
+		if (in_st >> n)
+		{
+			vec.push_back(n);
+			get_int();
+
+		}
+		else
+		{
+			cout << "That wasn't a number, try again"<<endl;
+			choose_int();
+		}
+	}
+	for (int x : vec) sum += x;
+	cout << "The sum is " << sum << endl;
+
+	keep_window_open();
+	return 0;
+}
+
+void choose_int()
+{
+	if (cin.fail())
+	{ 
+		cin.clear(); 
+		for (char ch; cin >> ch; )
+		{
+			if (isdigit(ch) || ch == '-')
+			{
+				cin.unget(); 
+							 
+				return;
+			}
+		}
+	}
+	error("no input"); 
+}
+int get_int()
+{
+	int n = 0;
+	while (true) 
+	{
+		if (cin >> n)
+			return n;
+		cout << "That wasn't a number, try again"<<endl;
+		choose_int();
+	}
+}
+
