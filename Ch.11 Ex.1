@@ -1,0 +1,26 @@
+// zadanie 7: wykonac Exercise 1 ze str. 408
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	fstream text, file_1;
+	string line;
+		text.open("my_file.txt");
+
+		while (!text.eof()) 
+		{
+			text >> line;
+			for (size_t j = 0; j< line.length(); ++j) line[j] = tolower(line[j]);
+			cout << line;
+		}
+
+		text.close();
+
+		file_1.open("file.txt");
+		file_1 << line;
+		file_1.close();
+
+		return 0;
+
+}
