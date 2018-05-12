@@ -1,0 +1,58 @@
+#include "std_lib_facilities.hpp"
+
+using namespace std;
+
+int main()
+{
+	int x = 0;
+	int a, b;
+	string user;
+	vector<string> words;
+
+	while (x <= 0 || x > 10000)
+	{
+		cout << "Enter an number between 1 and 10000 " << endl;
+		cin >> x;
+	}
+	x += 7 * x + 2 ;
+	words.push_back("rock");
+	words.push_back("paper");
+	words.push_back("scissors");
+	cout << "Write rock/paper/scissors to choose";
+
+	while (cin >> user)
+	{
+		if (user == "rock")
+		{
+			a = 0;
+		}
+		else if (user == "paper")
+		{
+			a = 1;
+		}
+		else if (user == "scissors")
+		{
+			a = 2;
+		}
+		else
+		{
+			cout << "Plese write rock/paper/scissors";
+			a = 0;
+			return 0;
+		}
+		x = (11 * x) % 168;
+		b = x % 3;
+		if (b == a)
+		{
+			cout << "Draw"<<endl;
+		}
+		else if ((3 + b - a) % 3 == 1)
+		{
+			cout <<" You loose"<<endl;
+		}
+		else
+		{
+			cout << " You win!"<<endl;
+		}
+	}
+}
