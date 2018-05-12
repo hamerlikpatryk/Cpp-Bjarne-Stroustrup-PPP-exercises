@@ -1,0 +1,41 @@
+// Zrobic pierwszy drill ze str 663: "Array drill".
+
+#include "std_lib_facilities.hpp"
+
+void f(int ga[], int number);
+
+const int number = 10;
+int ga[number] = { 1,2,4,8,16,32,64,128,256,512 };
+
+int main()
+{	
+	f(ga, number);
+	int aa[10] = { 1, 1 * 2, 3 * 2 * 1, 4 * 3 * 2 * 1, 5 * 4 * 3 * 2 * 1, 6 * 5 * 4 * 3 * 2 * 1,
+		7 * 6 * 5 * 4 * 3 * 2 * 1, 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1, 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1, 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 };
+	f(aa, number);
+}
+
+void f(int ga[], int number)
+{
+	int la[10];
+	for (int i = 0; i < 10; i++)
+	{
+		la[i] = ga[i];
+		cout << la[i] << " ";
+	}
+	cout << endl;
+	int* p = new int[number];
+
+
+	cout << "Pointer: ";
+	for (int i=0; i < number; i++)
+	{
+		p[i] = ga[i];
+		cout << p[i] << " ";
+	}
+	cout << endl;
+
+	delete[] p;
+
+	system("pause");
+}
