@@ -1,0 +1,50 @@
+// Zrobic drugi drill ze str 663: "std library vector drill".
+
+#include "std_lib_facilities.hpp"
+
+vector<int>gv(10);
+
+void f(vector<int>gv);
+
+
+int main()
+{
+	gv[0] = 1;
+	for (int i = 1; i<gv.size(); ++i)
+	{ 
+		gv[i] = gv[i - 1] * 2;
+	}
+
+	f(gv);
+
+	vector<int> vv(10);
+	vv[0] = 1;
+	for (int i = 1; i<vv.size(); ++i)
+	{
+		vv[i] = vv[i - 1] * 2;
+	}
+
+	f(vv);
+
+	system("pause");
+}
+
+void f(vector<int>gv)
+{
+	vector<int>lv(gv.size());
+	lv = gv;
+	cout << "lv:";
+	for (int i = 0; i<lv.size(); ++i)
+	{
+		cout << lv[i] << ((i<(lv.size() - 1)) ? " " : "\n");
+	}
+
+	vector<int>lv2;
+	lv2 = lv;
+	cout << "lv2:";
+	for (int i = 0; i<lv2.size(); ++i)
+	{
+		cout << lv2[i] << ((i<(lv2.size() - 1)) ? " " : "\n");
+	}
+}
+
