@@ -1,0 +1,57 @@
+// zadanie 4: wykonac Exercise 9 ze str. 378
+// Uwaga: chodzi o to aby czytaÄ jednoczeĹnie z dwĂłch plikĂłw. W kaĹźdym z tych plikĂłw sĹowa sÄ
+//posortowane.
+// NaleĹźy zapisaÄ plik wyjĹciowy w ktĂłrym wszystkie sĹowa takĹźe sÄ
+//posortowane oraz zawiera wszystkie sĹowa z obu plikĂłw.
+// Uwaga: nie wolno samemu sortowaÄ tych sĹĂłw, poniewaĹź oba pliki juĹź sÄ
+//posortowane!WywoĹanie polecenia sort(..) jest zakazane!
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	ifstream file_1, file_2;
+	ofstream file_3;
+	string text_1, text_2, text_3;
+
+	char a, b;
+
+	file_1.open("text_1.txt", ios::in);
+	if (file_1.good() == false)
+	{
+		cout << "file1 doesn't exist!";
+		getchar(); getchar();
+		exit(0);
+	}
+	file_2.open("text_2.txt", ios::in);
+	if (file_2.good() == false)
+	{
+		cout << "file2 doesn't exist!";
+		getchar(); getchar();
+		exit(0);
+	}
+	file_3.open("text_3.txt", ios::out);
+	if (file_3.good() == false)
+	{
+		cout << "file3 doesn't exist!";
+		getchar(); getchar();
+		exit(0);
+	}
+	while (file_1.eof() == 0 && file_2.eof() == 0)
+	{
+		file_1 >> a;
+		file_2 >> b;
+		if (a < b) file_3 << a;
+		else file_3 << b;
+
+
+	}
+	file_1.close();
+	file_2.close();
+	file_3.close();
+
+	keep_window_open();
+
+	return 0;
+
+}
