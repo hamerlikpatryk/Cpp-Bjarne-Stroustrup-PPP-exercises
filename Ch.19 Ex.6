@@ -1,0 +1,105 @@
+// Zrobic zadanie 6 ze str. 709
+
+#include "std_lib_facilities.hpp"
+
+template <class T> class Number
+
+{
+	T value;
+
+public:
+	Number() : value(T()) { }
+	Number(const Number& arg) : value(arg.value) { }
+	Number(T val) : value(val) { }
+	Number& operator=(const Number& val) { value = val.value; }
+	T get() const { return value; }
+};
+
+template<class T>
+Number<T> operator+(const Number<T>& val1, const Number<T>& val2)
+{
+	return Number<T>(val1.get() + val2.get());
+}
+
+template<class T>
+Number<T> operator-(const Number<T>& val1, const Number<T>& val2)
+{
+	return Number<T>(val1.get() - val2.get());
+}
+
+template<class T>
+Number<T> operator*(const Number<T>& val1, const Number<T>& val2)
+{
+	return Number<T>(val1.get() * val2.get());
+}
+
+template<class T>
+Number<T> operator/(const Number<T>& val1, const Number<T>& val2)
+{
+	return Number<T>(val1.get() / val2.get());
+}
+
+template<class T>
+Number<T> operator%(const Number<T>& val1, const Number<T>& val2)
+{
+	return Number<T>(val1.get() % val2.get());
+}
+
+template<class T>
+ostream& operator<<(ostream& os, const Number<T>& d)
+{
+	os << d.get();
+	return os;
+}
+
+
+int main()
+{
+	cout << "Int version: " << endl;
+	Number<int> i1;
+	Number<int> i2 = 5;
+	Number<int> i3(i2);
+	Number<int> i4;
+	i4 = i2;
+	Number<int> i5 = 10;
+	cout << "i1 : " << i1 << endl;
+	cout << "i2 : " << i2 << endl;
+	cout << "i3 : " << i3 << endl;
+	cout << "i4 : " << i4 << endl;
+	cout << "i5 : " << i5 << endl;
+	cout << "i2 + i5 = " << i2 + i5 << endl;
+	cout << "i5 - i2 = " << i5 - i2 << endl;
+	cout << "i2 * i5 = " << i2 * i5 << endl;
+	cout << "i5 / i2 = " << i5 / i2 << endl;
+
+	cout << "i2 + i5 = " << i2 + i5 << endl;
+	cout << "i5 - i2 = " << i5 - i2 << endl;
+	cout << "i2 * i5 = " << i2 * i5 << endl;
+	cout << "i5 / i2 = " << i5 / i2 << endl;
+	cout << "i5 % i2 = " << i5 % i2 << endl;
+
+	cout << "Double version: " << endl;
+	Number<double> d1;
+	Number<double> d2 = 5;
+	Number<double> d3(d2);
+	Number<double> d4;
+	d4 = d2;
+	Number<double> d5 = 10;
+	cout << "d1 : " << d1 << endl;
+	cout << "d2 : " << d2 << endl;
+	cout << "d3 : " << d3 << endl;
+	cout << "d4 : " << d4 << endl;
+	cout << "d5 : " << d5 << endl;
+	cout << "d2 + d5 = " << d2 + d5 << endl;
+	cout << "d5 - d2 = " << d5 - d2 << endl;
+	cout << "d2 * d5 = " << d2 * d5 << endl;
+	cout << "d5 / d2 = " << d5 / d2 << endl;
+						 
+	cout << "d2 + d5 = " << d2 + d5 << endl;
+	cout << "d5 - d2 = " << d5 - d2 << endl;
+	cout << "d2 * d5 = " << d2 * d5 << endl;
+	cout << "d5 / d2 = " << d5 / d2 << endl;
+	cout << "d5 % d2 = " << d5 % d2 << endl; ////////////modulo doesnt work for double type
+}
+
+
