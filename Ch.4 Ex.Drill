@@ -1,0 +1,115 @@
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	int i = 0;
+	double val1 = 0, m = 0, ft = 0, sum = 0, length = 1;// val2 = 0;
+	constexpr double cm_per_inch = 2.54, m_per_cm = 100, // gwarant że wartość jest niezmieniona w czasie kompilacji
+		ft_per_inch = 12, ft_per_cm = 30.48; 
+	char stop_loop = '|';
+	string yard, meter, gallons, km, unit;// cm, inch, meter, feet ;
+
+	vector <double> vec;
+
+	while (cin >> val1) // && cin >> val2)
+	{
+		cout << "Please length and type what you want to convert (cm-->cm to inch, inch --> inch to cm, meter--> metres to cm, feet--> feets to inch) " << endl;
+		cin >> length >> unit;
+		if (unit == "cm")
+		{
+			cout << "cm == " << length << " converted on inch == " << length * cm_per_inch;
+			sum += length / m_per_cm;
+			i++;
+			vec.push_back(length / m_per_cm);
+		}
+		else if (unit == "inch")
+		{
+			cout << "inch == " << length << " converted on cm == " << length / cm_per_inch;
+			sum += (length / cm_per_inch) / m_per_cm;
+			i++;
+			vec.push_back((length / cm_per_inch) / m_per_cm);
+		}
+		else if (unit == "meter")
+		{
+			cout << "metres == " << length << " converted on cm == " << length * m_per_cm;
+			sum += length;
+			i++;
+			vec.push_back(length);
+		}
+		else if (unit == "feet")
+		{
+			cout << "feet == " << length << " converted on in == " << length * ft_per_inch;
+			sum += length / ft_per_cm;
+			i++;
+			vec.push_back(length / ft_per_cm);
+		}
+		else if (unit == "y" || unit == "yard" || unit == "meter" || unit == "km" || unit == "gallons")
+		{
+			cout << " Value rejected!" << endl; break;
+		}
+		else
+		{
+			cout << " Program cant accept this unit" << endl; break;
+		}
+	}
+	cout << "Sum = " << sum << endl;
+	cout << "Number of operations = " << i << endl;
+	cout << "Vector = " << endl;
+	for (double x : vec)
+	{
+		sort(vec);
+		cout << x << " " << endl;
+	}
+}
+
+
+
+
+/*
+		cout << "Your /*first value is: " << val1 << endl; //" your second valuse is : " << val2 << endl;
+		double min = val1;
+		double max = val1;
+		cout << "Enter your new value: " << endl;
+			cin >> val1;
+			if (val1 < min) cout << val1 << " is the smallest so far" << endl;
+			min = val1;
+			if (val1 > max) cout << val1 << " is the largest so far" << endl;
+			max = val1;
+		//if (val1 == stop_loop)
+		
+
+
+
+
+
+
+
+
+
+
+		//if (val2 == stop_loop)
+		//	break;
+		//if (val1 > val2)
+		//{
+		//	cout << "Value number 1 is bigger " << endl;
+		//	if (val1 - val2 < 1.0 / 100)
+		//		cout << "They are almost equal" << endl;
+		//}
+		//else if (val2 > val1)
+		//{
+		//	cout << "Value number 2 is bigger " << endl;
+		//	if (val2 - val1 < 1.0 / 100)
+		//		cout << "They are almost equal" << endl;
+		//}
+		//else if (val1 == val2)
+		//	cout << "They are equal" << endl;
+		//else
+		//	cout << "Something goes wrong" << endl;
+		
+
+	}
+
+
+
+
+} */
