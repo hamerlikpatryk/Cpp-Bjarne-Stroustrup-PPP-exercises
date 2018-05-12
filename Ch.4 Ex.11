@@ -1,0 +1,28 @@
+// zadanie 5: wykonac Exercise 11 ze str.129
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	vector<int> primes;
+	primes.push_back(2);
+	for (int i = 3; i < 100; i++)
+	{
+		bool prime = true;
+		for (int j = 0; j<primes.size() && primes[j] * primes[j] <= i; j++)
+		{
+			if (i % primes[j] == 0)
+			{
+				prime = false;
+				break;
+			}
+		}
+		if (prime)
+		{
+			primes.push_back(i);
+			cout << i << " ";
+		}
+	}
+
+	return 0;
+}
