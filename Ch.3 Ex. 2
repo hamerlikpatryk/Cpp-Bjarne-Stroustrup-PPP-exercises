@@ -1,0 +1,11 @@
+ #include "std_lib_facilities.hpp"
+
+int main()
+{
+    float a,b;
+    cout <<"Please enter number in miles"<<"\n";
+    cin >> a; 
+    b=a*(1/1.609);
+    cout<<"It's "<<b<<" kilometres"<<endl;
+    return 0;
+}
