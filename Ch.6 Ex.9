@@ -1,0 +1,83 @@
+// zadanie 11: wykonac Exercise 9 ze str.219
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+	vector<int>vec;
+	int a_int = 0, b_int = 0, c_int = 0, d_int = 0, n = 0;
+	char a = '0', b = '0', c = '0', d = '0';
+	cout << "Ile liczb chcesz wywołać?" << endl;
+	cin >> n;
+
+	switch (n)
+	{
+		case 1:
+		{
+			cout << "Wpisz liczbę jedności: ";
+			cin >> a;
+			a_int = a - '0';
+			vec.push_back(a_int);
+
+			cout << vec[0] << " jedności";
+			break;
+		}
+		case 2:
+		{
+			cout << "Wpisz liczbę jedności: ";
+			cin >> a;
+			a_int = a - '0';
+			vec.push_back(a_int);
+			cout << "Wpisz liczbę dzięsiątek: "; 
+			cin >> b;
+			b_int = b - '0';
+			vec.push_back(b_int);
+
+			cout << vec[0] << " dziesiątek " << vec[1] << " jedności";
+			break;
+		}
+		case 3:
+		{
+			cout << "Wpisz liczbę jedności: "; 
+			cin >> a;
+			a_int = a - '0';
+			vec.push_back(a_int);
+			cout << "Wpisz liczbę dziesiątek: ";
+			cin >> b;
+			b_int = b - '0';
+			vec.push_back(b_int);
+			cout << "Wpisz liczbę setek: "; 
+			cin >> c;
+			c_int = c - '0';
+			vec.push_back(c_int);
+
+			cout << vec[0] << " setek " << vec[1] << " dziesiątek " << vec[2] << " jedności ";
+			break;
+		}
+		case 4:
+		{
+			cout << "Wpisz liczbę jedności: "; 
+			cin >> a;
+			a_int = a - '0';
+			vec.push_back(a_int);
+			cout << "Wpisz liczbę dziesiątek: "; 
+			cin >> b;
+			b_int = b - '0';
+			vec.push_back(b_int);
+			cout << "Wpisz liczbę setek: "; 
+			cin >> c;
+			c_int = c - '0';
+			vec.push_back(c_int);
+			cout << "Wpisz liczbę tysięcy: ";
+			cin >> d;
+			d_int = d - '0';
+			vec.push_back(d_int);
+
+			cout << vec[0] << " tysięcy " << vec[1] << " setek " << vec[2] << " dzięsiątek " << vec[3] << " jedności ";
+			break;
+		}
+		default: cout << "Za dużo cyfr" << endl;
+			break;
+	}
+
+}
