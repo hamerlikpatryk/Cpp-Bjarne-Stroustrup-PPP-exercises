@@ -1,0 +1,78 @@
+// Zadanie 8: wykonac exercise 4 ze str. 408
+
+#include "std_lib_facilities.hpp"
+
+enum number_format
+{
+	decimal, octal, hexadecimal
+};
+
+ostream & operator << (ostream& os, number_format nf)
+{
+	if (nf == decimal)
+		return os << "decimal\t";
+
+	else if (nf == octal)
+		return os << "octal\t";
+
+	else if (nf == hexadecimal)
+		return os << "hexadecimal\t";
+
+	else
+		error("illegal value of number_format");
+}
+
+void print(int x, number_format nf)
+{
+	cout << showbase;
+
+		if (nf == decimal)
+			cout << dec << setw(6) << x;
+
+		else if (nf == octal)
+			cout << oct << setw(6) << x;
+
+		else if (nf == hexadecimal)
+			cout << hex << setw(6) << x;
+
+	cout <<" \t "<< nf << " converts to \t " << dec << setw(6) << x << ' ' << decimal << endl;
+}
+
+int main()
+{
+	cout << "Please type numbers in decimal, octal or hexadecimal format:\n";
+	int i = 0;
+	char ch;
+	while (cin >> ch)
+	{
+		if (ch == '0')
+		{
+			cin.get(ch);
+			if (ch == 'x')
+			{
+				cin >> hex >> i;
+				print(i, hexadecimal);
+			}
+			else if (isdigit(ch))
+			{
+				cin.unget();
+				cin >> oct >> i;
+				print(i, octal);
+			}
+			else
+			{
+				cin.unget();
+				print(0, octal);
+			}
+		}
+		else if (isdigit(ch))
+		{
+			cin.unget();
+			cin >> dec >> i;
+			print(i, decimal);
+		}
+		else
+			break;
+	}
+	keep_window_open();
+}
