@@ -1,0 +1,90 @@
+// Zrobic zadanie 7 ze str. 709
+
+#include "std_lib_facilities.hpp"
+
+using namespace std;
+
+template<class T> class Number{
+public:
+    T val;
+    Number () : val(0) {}
+    Number (T arg) : val(arg) {}
+    Number (const Number & arg) : val(arg.val) {}
+    Number & operator= (const Number & arg){
+        this->val = arg.val;
+        return *this;
+    }
+    Number & operator= (const T & arg){
+        this->val = arg;
+        return *this;
+    }
+    Number operator+ () const
+	{
+		return *this;
+	}
+    Number operator+ (const Number & arg) const
+	{
+		return Number(this->val+arg.val);
+	}
+    Number operator+ (const T & arg) const
+	{
+		return Number(this->val+arg);
+	}
+    Number operator- (const Number & arg) const
+	{
+		return Number(this->val-arg.val);
+	}
+    Number operator- (const T & arg) const
+	{
+		return Number(this->val-arg);
+	}
+    Number operator* (const Number & arg) const
+	{
+		return Number(this->val*arg.val);
+	}
+    Number operator* (const T & arg) const
+	{
+		return Number(this->val*arg);
+	}
+    Number operator/ (const Number & arg) const
+	{
+		return Number(this->val/arg.val);
+	}
+    Number operator/ (const T & arg) const
+	{
+		return Number(this->val/arg);
+	}
+    Number operator% (const Number & arg) const
+	{
+		return Number(this->val%arg.val);
+	}
+    Number operator% (const T & arg) const
+	{
+		return Number(this->val%arg);
+	}
+};
+template<class T> istream & operator>> (istream & stream, Number<T> & arg)
+{
+	return stream >> arg.val;
+}
+template<class T> ostream & operator<< (ostream & stream, const Number<T> & arg)
+{
+	return stream << arg.val;
+}
+template<class T> Number<T> dupl (Number<T> arg)
+{
+    cout << arg << " ";
+    return arg*2;
+}
+int main (){
+    typedef Number<float> Numb;
+	Numb anumb, bnumb;
+    cout << "Please input some number: ";
+    cin >> anumb;
+	bnumb = dupl(gnats);
+    cout << bnumb << " " << Numb() << " " << Numb(-123)    << " " <<
+		Numb(12) + Numb(34) << " " << Numb(45) + 67 << " " <<
+		Numb(12) - Numb(34) << " " << Numb(45) - 67 << " " <<
+		Numb(12) * Numb(34) << " " << Numb(45) * 67 << " " <<
+		Numb(12) / Numb(5)  << " " << Numb(45) / 6  << endl;
+}
