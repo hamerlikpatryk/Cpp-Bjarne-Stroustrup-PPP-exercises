@@ -1,0 +1,48 @@
+// zadanie 2: wykonac Exercise 1 ze str. 377
+
+#include "std_lib_facilities.hpp"
+
+int main()
+{
+
+	string outp_name;
+	cout << "Please write a name of output file: ";
+	cin >> outp_name;
+
+	ofstream out_st{ outp_name }; 
+	if (!out_st)
+		error("can't open output file ", outp_name);
+
+	cout << "Please write a name of input file: ";
+	string inp_name;
+	cin >> inp_name;
+
+	ifstream in_st{ inp_name }; 
+	if (!in_st)
+		error("can't open input file ", inp_name);
+
+	vector<int> v; 
+	int x;
+
+	cout << "Write your values: " << endl;
+
+	while (cin >> x)
+	{
+		v.push_back(x);
+	}
+
+	double sum = 0;
+
+	for (int y : v)
+		sum += y;
+
+	in_st >> sum;
+	cout << sum;
+
+	getchar();
+	cout << endl;
+	keep_window_open();
+
+	return 0;
+
+}
