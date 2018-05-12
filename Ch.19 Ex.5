@@ -1,0 +1,63 @@
+// Zrobic zadanie 5 ze str. 709
+
+#include "std_lib_facilities.hpp"
+
+class Int
+{
+	int value;
+
+public:
+    Int() : value(0) { }                      
+    Int(const Int& arg) : value(arg.value) { }
+    Int(int val) : value(val) { }                 
+    Int& operator=(const Int& val) { value = val.value; }   
+    int get() const { return value; }
+};
+
+Int operator+(const Int& val1, const Int& val2)
+{
+	return Int(val1.get() + val2.get());
+}
+Int operator-(const Int& val1, const Int& val2)
+{
+	return Int(val1.get() - val2.get());
+}
+
+Int operator*(const Int& val1, const Int& val2)
+{
+	return Int(val1.get() * val2.get());
+}
+
+Int operator/(const Int& val1, const Int& val2)
+{
+	return Int(val1.get() / val2.get());
+}
+
+ostream& operator<<(ostream& os, const Int& d)
+{
+	os << d.get();
+	return os;
+}
+
+
+int main()
+{
+	Int i1;
+	Int i2 = 5;
+	Int i3(i2);
+	Int i4;
+	i4 = i2;
+	Int i5 = 10;
+	cout << "i1 : " << i1 << endl;
+	cout << "i2 : " << i2 << endl;
+	cout << "i3 : " << i3 << endl;
+	cout << "i4 : " << i4 << endl;
+	cout << "i5 : " << i5 << endl;
+	cout << "i2 + i5 = " << i2 + i5 << endl;
+	cout << "i5 - i2 = " << i5 - i2 << endl;
+	cout << "i2 * i5 = " << i2 * i5 << endl;
+	cout << "i5 / i2 = " << i5 / i2 << endl;
+
+} 
+
+
